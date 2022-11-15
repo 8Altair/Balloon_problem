@@ -17,25 +17,21 @@ public class Input
         Scanner in = new Scanner(System.in);
         String answer = in.nextLine();
 
-        if(answer.equals("i"))
-        {
+        if (answer.equals("i")) {
             Scanner stringObject = new Scanner(System.in);
             return new Pair<String, String>(10, "Hello Geeks!");//stringObject.nextLine();
         }
 
-        try
-        {
+        try {
             Scanner scanner = new Scanner(new File("\"C:\\Users\\dinoa\\IdeaProjects\\Balloon_problem\\Text.txt\""));
-            while (scanner.hasNextLine())
-            {
+            while (scanner.hasNextLine()) {
                 System.out.println(scanner.nextLine());
             }
             scanner.close();
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        return ;
+        return;
+    }
 }

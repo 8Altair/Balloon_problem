@@ -1,49 +1,50 @@
 package org.Task;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Collections;
 
 public class Solution
 {
-    public static int solution(String S, String T)
+    public static int solution(String S, String T)  // S for the search word, T for the text in which the search is held
     {
-        HashMap<String, Integer> letterIterations = new HashMap<String, Integer>();
-        letterIterations.put("B", 0);
-        letterIterations.put("A", 0);
-        letterIterations.put("L", 0);
-        letterIterations.put("O", 0);
-        letterIterations.put("N", 0);
-
-        for(int i = 0; i < S.length(); i++)
+        HashMap<String, Integer> letterIterations1 = new HashMap<String, Integer>();    // All characters inside the S
+        for(int i = 0; i < S.length(); i++) // Iterating through the length of the string S
         {
-            letterIterations.put(letterIterations[i], letterIterations.get(i) + 1);
+            if(letterIterations1.containsKey(Character.toString(S.charAt(i)))) // Checking if the key already exists
+            {
+                letterIterations1.put       // Updating value by 1
+                        (Character.toString(S.charAt(i)), letterIterations1.get(Character.toString(S.charAt(i))) + 1);
+            }
+            else    // The pair must be created
+            {
+                letterIterations1.put(Character.toString(S.charAt(i)), 1);  // Adding a new pair in the map
+            }
         }
 
-        /*for(int i = 0; i < S.length(); i++)
+        HashMap<String, Integer> letterIterations2 = new HashMap<String, Integer>();    // All characters inside the T
+        for(int i = 0; i < T.length(); i++) // Iterating through the length of the text T
         {
-            if ((Character.toString(S.charAt(i)).equals("B")))
+            if(letterIterations2.containsKey(Character.toString(T.charAt(i))))  // Checking if the key already exists
             {
-                letterIterations.put("B", letterIterations.get("B") + 1);
+                letterIterations2.put       // Updating value by 1
+                        (Character.toString(T.charAt(i)), letterIterations2.get(Character.toString(T.charAt(i))) + 1);
             }
-            if ((Character.toString(S.charAt(i)).equals("A")))
+            else    // The pair must be created
             {
-                letterIterations.put("A", letterIterations.get("A") + 1);
+                letterIterations2.put(Character.toString(T.charAt(i)), 1);  // Adding a new pair in the map
             }
-            if ((Character.toString(S.charAt(i)).equals("L")))
-            {
-                letterIterations.put("L", letterIterations.get("L") + 1);
-            }
-            if ((Character.toString(S.charAt(i)).equals("O")))
-            {
-                letterIterations.put("O", letterIterations.get("O") + 1);
-            }
-            if ((Character.toString(S.charAt(i)).equals("N")))
-            {
-                letterIterations.put("N", letterIterations.get("N") + 1);
-            }
-        }*/
+        }
 
-        return Math.min(letterIterations.get("B"), Math.min(letterIterations.get("A"),
-                Math.min(letterIterations.get("L") / 2, Math.min(letterIterations.get("O") / 2,
-                        letterIterations.get("N")))));
+        List<Integer> appearances = new ArrayList<>();  // Creating a list of integers
+        for(int i = 0; i < S.length(); i++) // Iterating through the length of the string S
+        {
+            appearances.add     // Adding an element (integer quotient) in the created list
+                    (letterIterations2.get(Character.toString(S.charAt(i))) /
+                            letterIterations1.get(Character.toString(S.charAt(i))));
+        }
+
+        return Collections.min(appearances);    // Returning the minimum element inside the list
     }
 }
