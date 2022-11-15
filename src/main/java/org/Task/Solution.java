@@ -1,10 +1,10 @@
-package org.example;
+package org.Task;
 
 import java.util.HashMap;
 
 public class Solution
 {
-    public static int solution(String S)
+    public static int solution(String S, String T)
     {
         HashMap<String, Integer> letterIterations = new HashMap<String, Integer>();
         letterIterations.put("B", 0);
@@ -14,6 +14,11 @@ public class Solution
         letterIterations.put("N", 0);
 
         for(int i = 0; i < S.length(); i++)
+        {
+            letterIterations.put(letterIterations[i], letterIterations.get(i) + 1);
+        }
+
+        /*for(int i = 0; i < S.length(); i++)
         {
             if ((Character.toString(S.charAt(i)).equals("B")))
             {
@@ -35,7 +40,7 @@ public class Solution
             {
                 letterIterations.put("N", letterIterations.get("N") + 1);
             }
-        }
+        }*/
 
         return Math.min(letterIterations.get("B"), Math.min(letterIterations.get("A"),
                 Math.min(letterIterations.get("L") / 2, Math.min(letterIterations.get("O") / 2,
