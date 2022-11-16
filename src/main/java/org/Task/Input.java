@@ -1,5 +1,9 @@
 package org.Task;
 
+import Exceptions.CaseError;
+import Exceptions.InvalidInput;
+import Exceptions.LengthOutOfRange;
+
 import java.util.Scanner;
 
 public class Input

@@ -1,4 +1,4 @@
-package org.Task;
+package Exceptions;
 
 public class CaseError extends RuntimeException
 {
