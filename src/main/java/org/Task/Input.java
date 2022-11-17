@@ -1,8 +1,8 @@
 package org.Task;
 
-import Exceptions.CaseError;
-import Exceptions.InvalidInput;
-import Exceptions.LengthOutOfRange;
+import TryCatch.CaseCheck;
+import TryCatch.LengthCheck;
+import TryCatch.SelectionCheck;
 
 import java.util.Scanner;
 
@@ -11,84 +11,40 @@ public class Input
     public static PairResult input()
     {
         // Word input
-        System.out.println("Enter the word You are searching:");
+        /*System.out.println("Enter the word You are searching:");
         Scanner key = new Scanner(System.in);
-        String word = key.nextLine();
+        String word = key.nextLine();*/
+        String word = "BALLOON";
 
-        try
-        {
-            if(word.length() == 0 || word.length() > 200000)
-            {
-                throw new RuntimeException("Wrong input.");
-            }
-        }
-        catch(RuntimeException error)
-        {
-            throw new LengthOutOfRange("Length of the string is out of range.", error);
-        }
-
-        try
-        {
-            if(word.toLowerCase().equals(word))
-            {
-                throw new RuntimeException("Wrong input.");
-            }
-        }
-        catch(RuntimeException error)
-        {
-            throw new CaseError("String must be uppercase only.", error);
-        }
+        LengthCheck.lengthCheck(word);
+        CaseCheck.caseCheck(word);
 
         // Selection input
-        System.out.println("Press \"i\" for input and \"f\" for file reading of the text.");
+        /*System.out.println("Press \"i\" for input and \"f\" for file reading of the text.");
         Scanner in = new Scanner(System.in);
         String answer = in.nextLine();
 
-        try
-        {
-            if(!answer.equals("i") && !answer.equals("f"))
-            {
-                throw new RuntimeException("Wrong input.");
-            }
-        }
-        catch (RuntimeException error)
-        {
-            throw new InvalidInput("Value not valid.", error);
-        }
+        SelectionCheck.selectionCheck(answer);*/
 
-        if (answer.equals("i"))
+        String Text = "BAOOLLNNOLOLGBAX";
+
+        LengthCheck.lengthCheck(Text);
+        CaseCheck.caseCheck(Text);
+
+        return new PairResult(word, Text);
+
+        /*if (answer.equals("i"))     // Processing selection
         {
             System.out.println("Enter the text:");
             Scanner input = new Scanner(System.in);
             String Text = input.nextLine();
 
-            try
-            {
-                if(Text.length() == 0 || Text.length() > 200000)
-                {
-                    throw new RuntimeException("Wrong input.");
-                }
-            }
-            catch (RuntimeException error)
-            {
-                throw new LengthOutOfRange("Length of the string is out of range.", error);
-            }
-
-            try
-            {
-                if(Text.toLowerCase().equals(Text))
-                {
-                    throw new RuntimeException("Wrong input.");
-                }
-            }
-            catch(RuntimeException error)
-            {
-                throw new CaseError("String must be uppercase only.", error);
-            }
+            LengthCheck.lengthCheck(Text);
+            CaseCheck.caseCheck(Text);
 
             return new PairResult(word, Text);
         }
 
-        return new PairResult(word, answer);
+        return new PairResult(word, answer);*/
     }
 }

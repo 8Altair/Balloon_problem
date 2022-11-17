@@ -40,11 +40,15 @@ public class Solution
         List<Integer> appearances = new ArrayList<>();  // Creating a list of integers
         for(int i = 0; i < S.length(); i++) // Iterating through the length of the string S
         {
-            appearances.add     // Adding an element (integer quotient) in the created list
-                    (letterIterations2.get(Character.toString(S.charAt(i))) /
-                            letterIterations1.get(Character.toString(S.charAt(i))));
+            if(letterIterations2.containsKey(Character.toString(S.charAt(i))))
+            {
+                appearances.add     // Adding an element (integer quotient) in the created list
+                        (letterIterations2.get(Character.toString(S.charAt(i))) /
+                                letterIterations1.get(Character.toString(S.charAt(i))));
+            }
         }
 
+        if(appearances.isEmpty()) { return 0; }
         return Collections.min(appearances);    // Returning the minimum element inside the list
     }
 }
