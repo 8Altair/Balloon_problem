@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class MainCode
 {
-    public static void mainCode(PairResult data)
+    public static void mainCode()
     {
         String word = "BALLOON";
 
@@ -20,11 +20,15 @@ public class MainCode
 
         try
         {
-            // FIle reading
+            // File reading
             Scanner scanner = new Scanner(new File("src/main/java/org/Task/Text"));
             while (scanner.hasNextLine())   // Checking the file line by line
             {
                 String text = scanner.nextLine();
+                LengthCheck.lengthCheck(text);
+                CaseCheck.caseCheck(text);
+
+                PairResult data = new PairResult(word, text);
                 int numberOfAppearances = Solution.solution(data.first(), text);    // Njumber of possible words
                 System.out.println("The letters from the word " + data.first()
                         + " appear " + numberOfAppearances + " times in the given text.");

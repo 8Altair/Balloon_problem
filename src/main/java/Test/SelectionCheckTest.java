@@ -1,16 +1,16 @@
 package Test;
 
-import org.Task.Main;
+import TryCatch.SelectionCheck;
 import org.junit.jupiter.api.Test;
 
-class MainTest
+public class SelectionCheckTest
 {
     @Test
-    void testMain()
+    public void testSelectionCheck()
     {
         // Setup
         // Run the test
-        Main.main(new String[]{"args"});
+        SelectionCheck.selectionCheck("S");
 
         // Verify the results
     }
