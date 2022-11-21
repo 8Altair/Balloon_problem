@@ -1,15 +1,11 @@
 package org.Task;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class HTTPController extends HttpServlet
 {
@@ -31,5 +27,5 @@ public class HTTPController extends HttpServlet
         out.println("<h1>" + result + "</h1>");
     }
 
-    public void destructor() { /* Do nothing */ }
+    public void destructor() {}
 }
